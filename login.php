@@ -48,37 +48,47 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
-  <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
-<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-
+  <title>Login</title>  
+<link href="dist/css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" href="dist/css/customcss.css">
-            <link rel="stylesheet" href="dist/css/loginCss.css">
 
 
-  
+
+  <style>
+body {background-image: url("dist/img/background.jpg");}
+</style>
 </head>
 
 <body>
-  
-<div class="pen-title">
-  <h1>Database Zona Gorizia</h1>
-</div>
-<div class="module form-module">
-  
-  <div class="form">
-    <h2>Collegati col tuo account</h2>
-    <form action="#" method="post">
-      <input type="text" name="user" id="user" placeholder="Username"/>
-      <input type="password" name="pass" id="pass" placeholder="Password"/>
-      <input type="submit" name ="submit" id="submit" value="Login"/>
-    </form>
-  </div>
 
+ <div class="container">
+        <div class="row"><br><br>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Accedi</h3>
+                    </div>
+                    <div class="panel-body">
+                      <form action="#" method="post">
+                       <fieldset>
+                        <div class="form-group">
+
+                        <input type="text" name="user" id="user" required class="form-control" placeholder="Username"/>
+
+                        </div>
+                        <div class="form-group">
+                                    <input class="form-control" placeholder="Password" name="pass" type="password" value="">
+                        </div>
+                           <input type="submit" class="btn btn-lg btn-success btn-block" value="Login"/>
+                          </fieldset>
+                        </form>
+                      </div>
+          </div>
+      </div>
+  </div>
 </div>
+                                <!-- Change this to a button or input when using this as a form -->
+ 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </body>
 </html>
