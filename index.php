@@ -38,6 +38,16 @@ $(document).ready(function($) {
     });
 });
 </script>
+<style>
+.hover12 figure img {
+  opacity: 1;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.hover12 figure:hover img {
+  opacity: .5;
+}
+</style>
 	</head>
 	<body>
   <div id="wrapper">
@@ -54,28 +64,25 @@ $(document).ready(function($) {
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+        <div class="col-lg-4 hover12">
+         <img class="img-circle" src="dist/img/campo_ex.png" alt="Generic placeholder image" width="220" height="220">
           <h2>Campi/Case</h2>
-          <p>ajkshflkashfasfhklalkshjfa </p>
+          <p>Sei alla ricerca di un posto dove fare il campo estivo o un campetto invernale? Questa e la sezione adatta!</p>
           <p><a class="btn btn-default" href="paginaMostraCampi.php" role="button">Cerca &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Attivit;</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-          <p><a class="btn btn-default" href="paginaMostraAttivita.php" role="button">View details &raquo;</a></p>
+          <img class="img-circle" src="dist/img/attivit_ex.png" alt="Generic placeholder image" width="220" height="220">
+          <h2>Attività</h2>
+          <p>Devi parlare di un tema ma non sai come affrontarlo? Cerca tra le attivita qui dentro!</p>
+          <p><a class="btn btn-default" href="paginaMostraAttivita.php" role="button">Cerca &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Qualcos'altro</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <img class="img-circle" src="dist/img/materiali_ex.png" alt="Generic placeholder image" width="220" height="220">
+          <h2>Materiali di zona</h2>
+          <p>Hai bisogno di avere in prestito del materiale dalla zona? Qui sei nel posto giusto!</p>
+          <p><a class="btn btn-default" href="#" role="button">Controlla &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
-
-
-
     </div>
     </div>
   </body>

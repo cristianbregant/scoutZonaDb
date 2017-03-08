@@ -35,6 +35,7 @@ $(document).ready(function($) {
 });
 
 </script>
+
 	</head>
 	<body>
   <div id="wrapper">
@@ -81,9 +82,9 @@ $(document).ready(function($) {
             </div>
             <div class="modal-body step-1" data-step="1">
 		        <form action="">
-				  <input type="button" name="scelta" value="campo" onclick="sendEvent('#demo-modal-3', 2)">
-				  <input type="button" name="scelta" value="casa" onclick="sendEvent('#demo-modal-3', 2)">
-				  <input type="button" name="scelta" value="entrambi" onclick="sendEvent('#demo-modal-3', 2)">
+				  <img class="img-circle" src="dist/img/campo_corr_ex.png" alt="Generic placeholder image" width="220" height="220" onclick="sendEvent('#demo-modal-3', 2)"><br>
+				  <img class="img-circle" src="dist/img/casa_ex.png" alt="Generic placeholder image" width="220" height="220" onclick="sendEvent('#demo-modal-3', 2)"><br>
+				  <img class="img-circle" src="dist/img/entrambi_ex.png" alt="Generic placeholder image" width="220" height="220" onclick="sendEvent('#demo-modal-3', 2)"><br>
 				</form>
             </div>
             <div class="modal-body step-2" data-step="2">

@@ -17,7 +17,7 @@
             <li><a href="paginaMostraAttivita.php">Attività</a></li>
             <li><a href="materialeZona.php">Materiale di zona</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Eventi <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Eventi Passati<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="eventiLC.php">L/C</a></li>
                 <li><a href="eventiEG.php">E/G</a></li>

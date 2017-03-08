@@ -55,15 +55,21 @@
 
 
   <style>
-body {background-image: url("dist/img/background.jpg");}
+body {background-color: #9B59B6;}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: left;
+}
 </style>
 </head>
 
 <body>
 
  <div class="container">
-        <div class="row"><br><br>
-            <div class="col-md-4 col-md-offset-4">
+        <div class="row">
+        <div class ="col-md-4 vcenter"><img src="dist/img/agesci-logo-bn.png" width="220" height="250"/></div>
+            <div class="col-md-4 vcenter">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Accedi</h3>
@@ -85,6 +91,7 @@ body {background-image: url("dist/img/background.jpg");}
                       </div>
           </div>
       </div>
+      <div class="col-md-4 vcenter"><img src="dist/img/agesci-logo-bn.png" width="220" height="250"/></div>
   </div>
 </div>
                                 <!-- Change this to a button or input when using this as a form -->
