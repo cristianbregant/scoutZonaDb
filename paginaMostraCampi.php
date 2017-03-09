@@ -29,9 +29,14 @@
 <!-- Latest compiled and minified JavaScript -->
 <script>
 $(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.location = $(this).data("href");
-    });
+    $("#campi").on('click', 'tr' , function (event) {
+        var array = Array();
+        $(this).children('td').each(function(i,v){
+          array[i]=$(this).text();
+        });
+        var url = array[3];
+        window.location = "http://"+url;
+  });
 });
 
 </script>
@@ -47,7 +52,7 @@ $(document).ready(function($) {
     <div class="container">
 
       <div class="starter-template">
-                  <h2 class="sub-header">Campi</h2>
+                  <h2 class="sub-header">Ultimi campi inseriti</h2>
                   <!-- Button trigger modal -->
 					<div style="float:right">
           <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#demo-modal-3">
@@ -60,51 +65,40 @@ $(document).ready(function($) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title step-1" data-step="1">Ricerca</h4>
-                <h4 class="modal-title step-2" data-step="2">Ricerca</h4>
-                <h4 class="modal-title step-3" data-step="3">Ricerca</h4>
-                <div class="m-progress">
-                    <div class="m-progress-bar-wrapper">
-                        <div class="m-progress-bar">
-                        </div>
-                    </div>
-                    <div class="m-progress-stats">
-                        <span class="m-progress-current">
-                        </span>
-                        /
-                        <span class="m-progress-total">
-                        </span>
-                    </div>
-                    <div class="m-progress-complete">
-                        Completed
-                    </div>
-                </div>
+                <h4 class="modal-title step-1" data-step="1">Cosa cerchi?</h4>
+                <h4 class="modal-title step-2" data-step="2">Campo</h4>
+                <h4 class="modal-title step-3" data-step="3">Casa</h4>
+                <h4 class="modal-title step-4" data-step="4">Entrambi</h4>
             </div>
             <div class="modal-body step-1" data-step="1">
 		        <form action="">
 				  <img class="img-circle" src="dist/img/campo_corr_ex.png" alt="Generic placeholder image" width="220" height="220" onclick="sendEvent('#demo-modal-3', 2)"><br>
-				  <img class="img-circle" src="dist/img/casa_ex.png" alt="Generic placeholder image" width="220" height="220" onclick="sendEvent('#demo-modal-3', 2)"><br>
-				  <img class="img-circle" src="dist/img/entrambi_ex.png" alt="Generic placeholder image" width="220" height="220" onclick="sendEvent('#demo-modal-3', 2)"><br>
+				  <img class="img-circle" src="dist/img/casa_ex.png" alt="Generic placeholder image" width="220" height="220" onclick="sendEvent('#demo-modal-3', 3)"><br>
+				  <img class="img-circle" src="dist/img/entrambi_ex.png" alt="Generic placeholder image" width="220" height="220" onclick="sendEvent('#demo-modal-3', 4)"><br>
 				</form>
             </div>
-            <div class="modal-body step-2" data-step="2">
-                This is the second step.
+  <div class="modal-body step-2" data-step="2">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerca</button>
             </div>
             <div class="modal-body step-3" data-step="3">
-                This is the final step.
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerca</button>
             </div>
+            <div class="modal-body step-4" data-step="4">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerca</button>
+            </div>
+
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
-               <!-- <button type="button" class="btn btn-primary step step-1" data-step="1" onclick="sendEvent('#demo-modal-3', 2)">Continue</button>-->
-                <button type="button" class="btn btn-primary step step-2" data-step="2" onclick="sendEvent('#demo-modal-3', 1)">Back</button>
-                <button type="button" class="btn btn-primary step step-2" data-step="2" onclick="sendEvent('#demo-modal-3', 3)">Continue</button>
+            <button type="button" class="btn btn-primary step step-2" data-step="2" onclick="sendEvent('#demo-modal-3', 1)">Indietro</button>
+            <button type="button" class="btn btn-primary step step-3" data-step="3" onclick="sendEvent('#demo-modal-3', 1)">Indietro</button>
+            <button type="button" class="btn btn-primary step step-4" data-step="4" onclick="sendEvent('#demo-modal-3', 1)">Indietro</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
             </div>
         </div>
     </div>
 </form>
 
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped" id="campi" name="campi">
               <thead>
                 <tr>
                   <th>Luogo</th>
@@ -115,118 +109,7 @@ $(document).ready(function($) {
                 </tr>
               </thead>
               <tbody>
-                <tr class='clickable-row' data-href='http://www.scoutgorizia3.it'>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
+                
               </tbody>
             </table>
           </div>

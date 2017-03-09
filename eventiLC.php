@@ -51,19 +51,15 @@ $(document).ready(function() {
                         alert('errore carico eventi');
                      }
                 }); 
+    //Al click del documento lo apre direttamente nel browser
     $("#eventi").on('click', 'tr' , function (event) {
-        var array = $(this).text();
-        var pos =0;
-        for(var i =0; i<array.length;i++){
-            if(array[i]=='w'&&array[i+1]=='w'&&array[i+2]=='w'){
-                pos = i;
-                break;
-            }
-
-        }
-        var url = array.substring(pos)
+        var array = Array();
+        $(this).children('td').each(function(i,v){
+          array[i]=$(this).text();
+        });
+        var url = array[3];
         window.location = "http://"+url;
-});
+  });
 function deleteRow(){
 
 }

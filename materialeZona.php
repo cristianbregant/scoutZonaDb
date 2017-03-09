@@ -34,6 +34,23 @@
         <script src="dist/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function($) {
+      
+    $.ajax({
+                    type: "GET",
+                    url: "php/materialiRetrieve.php",
+                    dataType: "json",
+                    data: "{}",
+                     success: function(response){
+                         var trHTML = '';
+                
+                        $.each(response, function (i, o) {
+                                   $('#materiali').append('<tr class=\"table-row\"><td>' + o.Nome + '</td><td>' + o.Descrizione + '</td><td>' + o.Qta + '</td></tr>');
+                                });
+                    },
+                     error: function(){
+                        alert('errore carico eventi');
+                     }
+                }); 
     $(".clickable-row").click(function() {
         window.location = $(this).data("href");
     });
@@ -48,9 +65,15 @@ $(document).ready(function($) {
        </div>
 
     <div class="container">
-
-
-       </div>
+   <div class="table-responsive">
+            <table class="table table-striped table-hover" id = "materiali" name="materiali">
+                <tr>
+                  <th>Nome</th>
+                  <th>Descrizione</th>
+                  <th>Q.tà</th>
+                </tr>
+            </table>
+          </div>
   </body>
 
 </html>

@@ -1,11 +1,12 @@
 <?php
 //test modify
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+
 $uploadOk = 1;
 $desc = $_POST['description'];
 $branca = $_POST['branca'];
 $target_dir = "../uploads/".$branca."/";
-if (!file_exists($target_dir) {
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+if (!file_exists($target_dir)) {
     mkdir($target_dir, 0777, true);
 }
 
@@ -20,7 +21,7 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
+if ($_FILES["fileToUpload"]["size"] > 50000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
