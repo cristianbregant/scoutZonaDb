@@ -1,6 +1,7 @@
 <?php
+include("connection.php");
+
 $parola = $_POST['ricerca'];
-$connection = mysqli_connect("localhost","root","","zona") or die("Error " . mysqli_error($connection));
 
 if($connection){
 	// estraggo tutte le regioni

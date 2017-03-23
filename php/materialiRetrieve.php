@@ -3,7 +3,7 @@
 // recupero vaolori delle select
 // mi connetto al database
 
-$connection = mysqli_connect("localhost","root","","zona") or die("Error " . mysqli_error($connection));
+include("connection.php");
 
 if($connection){
 	// estraggo tutte le regioni

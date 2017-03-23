@@ -1,13 +1,8 @@
 
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$user = "zona";
+include("connection.php");
 
-// Create connection
-$con = mysqli_connect($servername, $username, $password,$user);
 
 $uname=$_POST['user'];
 $pass=$_POST['pass'];
@@ -16,7 +11,7 @@ if($uname=='' || $pass=='')
         header("Location:login.php?id=Some fields are empty");
 }
 
-$qry=mysqli_query($con,"SELECT * FROM user WHERE username='$uname'");
+$qry=mysqli_query($connection,"SELECT * FROM user WHERE username='$uname'");
 if(!$qry){
 die("Query Failed: ". mysqli_error());
 }else{

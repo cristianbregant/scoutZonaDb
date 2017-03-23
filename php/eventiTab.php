@@ -2,12 +2,12 @@
 
 // recupero vaolori delle select
 // mi connetto al database
-
+$branca = $_GET['branca'];
 $connection = mysqli_connect("localhost","root","","zona") or die("Error " . mysqli_error($connection));
 
 if($connection){
 	// estraggo tutte le regioni
-	$query = "SELECT * FROM eventi WHERE Branca = 'RS' ";
+	$query = "SELECT * FROM eventi WHERE Branca = '".$branca."' ";
 
 	$result = mysqli_query($connection,$query) or die(mysqli_error($connection));
 

@@ -1,5 +1,5 @@
 <?php
-$connection = mysqli_connect("localhost","root","","zona") or die("Error " . mysqli_error($connection));
+include("connection.php");
 
 if($connection){
 	// estraggo tutte le regioni

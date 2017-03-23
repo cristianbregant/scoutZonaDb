@@ -1,5 +1,6 @@
 <?php
 //test modify
+include("connection.php");
 
 $uploadOk = 1;
 $desc = $_POST['description'];
@@ -38,8 +39,6 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-
-        $connection = mysqli_connect("localhost","root","","zona") or die("Error " . mysqli_error($connection));
 
         if($connection){
             $nome = basename( $_FILES["fileToUpload"]["name"]);

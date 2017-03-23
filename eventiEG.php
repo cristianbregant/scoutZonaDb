@@ -1,10 +1,5 @@
 <?php
-    require("php/config.php");
-    if(empty($_SESSION['user'])) 
-    {
-        header("Location: login.php");
-        die("Redirecting to login.php"); 
-    }
+include('php/session.php');
 ?>
 
 
@@ -37,7 +32,7 @@ $(document).ready(function() {
       
     $.ajax({
                     type: "GET",
-                    url: "php/eventiEGtab.php",
+                    url: "php/eventiTab.php?branca=EG",
                     dataType: "json",
                     data: "{}",
                      success: function(response){
