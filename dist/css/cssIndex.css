@@ -1,0 +1,120 @@
+h2{
+  font-family: font89789;
+  color:white;
+}
+#img1 h2{
+      display: table-cell;
+      vertical-align: middle;
+   }
+   #img2 h2{
+      display: table-cell;
+      vertical-align: middle;
+   }
+   #img3 h2{
+      display: table-cell;
+      vertical-align: middle;
+   }
+    #img1{
+             display: table;
+
+   }
+   #img2{
+          display: table;
+
+   }
+   #img3{
+             display: table;
+
+   }
+@media (min-width:769px){
+    #img1{
+      /* background-image: url('../img/scout3.png');*/
+      background-color: rgb(255,0,255);
+       width:100%;
+        height: 600px;
+       background-position:center;
+       margin-right: 10px;
+    transition: all 0.4s ease;    
+   }
+   #img2{
+     /*  background-image: url('../img/campo_ex.png'); */
+     background-color: rgb(255,0,255);
+       width:100%;
+        height: 600px;
+       background-position:center;  
+       margin-right: 10px;
+    transition: all 0.4s ease; 
+   }
+   #img3{
+     /*  background-image: url('../img/casa_ex.png') ;*/
+     background-color: rgb(255,0,255);
+       width:100%;
+        height: 600px;
+       background-position:center;  
+       margin-right: 10px;
+    transition: all 0.4s ease; 
+   }
+   .desktop:hover{
+    transform: scale(1.05);
+   }
+}
+
+@media (max-width:768px){
+    .desktop{
+       /* background-image: url("../img/campo_ex.png");*/
+        width:100%;
+        height: 300px;
+        background-position:center;
+
+    }
+       #img1{
+      /* background-image: url('../img/scout3.png');*/
+       width:100%;
+        height: 300px;
+       background-position:center;
+       margin-right: 10px;
+    transition: all 0.4s ease;    
+   }
+   #img2{
+      /* background-image: url('../img/campo_ex.png'); */
+       width:100%;
+        height: 300px;
+       background-position:center;  
+       margin-right: 10px;
+    transition: all 0.4s ease; 
+   }
+   #img3{
+     /*  background-image: url('../img/casa_ex.png') ;*/
+       width:100%;
+        height: 300px;
+       background-position:center;  
+       margin-right: 10px;
+    transition: all 0.4s ease; 
+   }
+}
+
+@media (max-width:480px){
+    .desktop{
+    }
+       #img1{
+      /* background-image: url('../img/scout3.png');*/
+      background-color: rgb(255,0,255);
+       width:100%;
+        height: 100px;
+      /* background-position:center;*/
+          }
+   #img2{
+       /*background-image: url('../img/campo_ex.png'); */
+       background-color: rgb(255,0,255);
+       width:100%;
+        height: 100px;
+     /*  background-position:center;  */
+   }
+   #img3{
+      /* background-image: url('../img/zonaPhone.png') ;*/
+      background-color: rgb(255,0,255);
+       width:100%;
+        height: 100px;
+       /*background-position:center;  */
+   }
+}
