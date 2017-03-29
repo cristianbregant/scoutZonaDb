@@ -62,8 +62,8 @@ $(document).ready(function($) {
         { data: 'Nome_Campo' },
         { data: 'Provincia' },
         { data: 'Acqua' },
-        { data: 'Fiume_vicino' },
-        { data: 'Bosco_vicino' }
+        { data: 'Fiume_Vicino' },
+        { data: 'Bosco_Vicino' }
         ]
     } );
 
@@ -74,23 +74,6 @@ $(document).ready(function($) {
         window.location = "mostraCampo.php?id="+id;
   });
 });
-/*function caricaUltimiCampi(){
-    $.ajax({
-                    type: "POST",
-                    url: "php/getCampi.php",
-                    dataType: "json",
-                     success: function(response){
-                         var trHTML = '';
-                
-                        $.each(response, function (i, o) {
-                                   $('#campi').append('<tr class=\"table-row\" data-href=\"http://'+o.Link+'\"><td style="display:none;">' + o.id + '</td><td>' + o.Nome_Campo + '</td><td>' + o.Provincia + '</td><td>' + o.Acqua + '</td><td>' + o.Fiume_vicino + '</td><td>' + o.Bosco_vicino + '</td><td style="display:none;">' + o.Link + '</td><td id="delete" align="center" onclick="deleteRow();">x</td></tr>');
-                                });
-                    },
-                     error: function(){
-                        alert('errore carico campi');
-                     }
-                });*/
-//}
 
 </script>
 
@@ -108,100 +91,11 @@ $(document).ready(function($) {
                   <h2 class="sub-header">Lista dei campi e delle case</h2>
                   <!-- Button trigger modal -->
 					<div style="float:right">
-          <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#demo-modal-3">
-					  Ricerca Avanzata
-					</button>
+          <input type="button" onclick="location.href='ricercaAvanzataCampi.php';" value="Ricerca Avanzata" />
           </div>
 
 <br><br><br>
-<form class="modal multi-step" id="demo-modal-3">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title step-1" data-step="1">Cosa cerchi?</h4>
-                <h4 class="modal-title step-2" data-step="2">Campo</h4>
-                <h4 class="modal-title step-3" data-step="3">Casa</h4>
-                <h4 class="modal-title step-4" data-step="4">Entrambi</h4>
-            </div>
-            <div class="modal-body step-1" data-step="1">
-		        <form action="">
-				  <img class="img-circle" src="dist/img/campo_corr_ex.png" alt="Generic placeholder image" width="220" height="220" onclick="sendEvent('#demo-modal-3', 2)"><br>
-				  <img class="img-circle" src="dist/img/casa_ex.png" alt="Generic placeholder image" width="220" height="220" onclick="sendEvent('#demo-modal-3', 3)"><br>
-				  <img class="img-circle" src="dist/img/entrambi_ex.png" alt="Generic placeholder image" width="220" height="220" onclick="sendEvent('#demo-modal-3', 4)"><br>
-				</form>
-            </div>
-  <div class="modal-body step-2" data-step="2">
-  <form class="form-horizontal" id="ricerca">
-<fieldset>
 
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Nome</label>  
-  <div class="radio-inline">
-  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
-  </div>
-</div>
-<div class="form-group">
- <label class="col-md-4 control-label" for="textinput">Acqua potabile necessaria?</label>  
-  <label class="radio-inline">
-      <input type="radio" name="optradio">Si
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="optradio">No
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="optradio">Non per forza
-    </label>
-</div>
-<div class="form-group">
- <label class="col-md-4 control-label" for="textinput">Fiume vicino necessario?</label>  
-  <label class="radio-inline">
-      <input type="radio" name="optradio">Si
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="optradio">No
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="optradio">Non per forza
-    </label>
-</div>
-<div class="form-group">
- <label class="col-md-4 control-label" for="textinput">Bosco vicino necessario?</label>  
-  <label class="radio-inline">
-      <input type="radio" name="optradio">Si
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="optradio">No
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="optradio">Non per forza
-    </label>
-</div>
-
-</fieldset>
-
-
-</form>
-
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerca</button>
-            </div>
-            <div class="modal-body step-3" data-step="3">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerca</button>
-            </div>
-            <div class="modal-body step-4" data-step="4">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerca</button>
-            </div>
-
-            <div class="modal-footer">
-            <button type="button" class="btn btn-primary step step-2" data-step="2" onclick="sendEvent('#demo-modal-3', 1)">Indietro</button>
-            <button type="button" class="btn btn-primary step step-3" data-step="3" onclick="sendEvent('#demo-modal-3', 1)">Indietro</button>
-            <button type="button" class="btn btn-primary step step-4" data-step="4" onclick="sendEvent('#demo-modal-3', 1)">Indietro</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
-            </div>
-        </div>
-    </div>
-</form>
 
           <div class="table-responsive">
             <table class="table table-striped table-bordered" id="campi" name="campi" cellspacing="0" width="100%">
