@@ -30,16 +30,16 @@ include('php/session.php');
 <script>
 //caricaUltimiCampi();
 $(document).ready(function($) {
-var table = $('#campi').DataTable( {
+   var table = $('#case').DataTable( {
         responsive:true,
         bLengthChange: false,
         language: {
             "lengthMenu": "Mostra _MENU_ elementi",
-            "zeroRecords": "Nessun campo trovato",
+            "zeroRecords": "Nessuna casa trovata",
             "info": "Mostra pagina _PAGE_ di _PAGES_",
-            "infoEmpty": "Nessun campo presente",
+            "infoEmpty": "Nessuna casa presente",
             
-            "infoFiltered": "(filtra al massimo _MAX_ campi')",
+            "infoFiltered": "(filtra al massimo _MAX_ case')",
             "search": "Cerca:",
             "paginate": {
                 "first":      "Prima",
@@ -56,27 +56,26 @@ var table = $('#campi').DataTable( {
             }],
         columns: [
         {data: 'id'},
-        { data: 'Nome_Campo' },
+        { data: 'Nome_Casa' },
         { data: 'Provincia' },
-        { data: 'Acqua' },
-        { data: 'Fiume_Vicino' },
-        { data: 'Bosco_Vicino' }
+        { data: 'Capienza_Letti' },
+        { data: 'Stanze' },
+        { data: 'Servizi' }
         ]
     } );
-
- $.ajax({
+  $.ajax({
                     type: "POST",
-                    url: "php/getC.php?f=1",
+                    url: "php/getC.php?f=2",
                     dataType: "json",
                      success: function(response){
                         $.each(response, function (i,o) {               
                            table.row.add({
                             "id": o.id,
-                            "Nome_Campo": o.Nome_Campo,
+                            "Nome_Casa": o.Nome_Casa,
                             "Provincia":o.Provincia,
-                            "Acqua":o.Acqua,
-                            "Fiume_vicino":o.Fiume_vicino,
-                            "Bosco_vicino":o.Bosco_vicino
+                            "Capienza_Letti":o.Capienza_Letti,
+                            "Stanze":o.Stanze,
+                            "Servizi":o.Servizi
 
                            }).draw();
                         });
@@ -84,15 +83,17 @@ var table = $('#campi').DataTable( {
                      error: function(){
                         alert('errore carico case');
                      }
- });
+                   });
 
 
 
 
-     $("#campi tbody").on('click', 'tr', function () {
+
+
+     $("#case tbody").on('click', 'tr', function () {
         var data = table.row( this ).data();
         var id = data['id'];
-        window.location = "mostraCampo.php?id="+id;
+        window.location = "mostraCasa.php?id="+id;
   });
 });
 
@@ -109,25 +110,25 @@ var table = $('#campi').DataTable( {
     <div class="container">
 
       <div class="starter-template">
-                  <h2 class="sub-header">Lista dei campi e delle case</h2>
+                  <h2 class="sub-header">Case Registrate: </h2>
                   <!-- Button trigger modal -->
 					<div style="float:right">
-          <input type="button" onclick="location.href='ricercaAvanzataCampi.php';" value="Ricerca Avanzata" />
+          <input type="button" onclick="location.href='ricercaAvanzataCase.php';" value="Ricerca Avanzata" />
           </div>
 
 <br><br><br>
 
 
           <div class="table-responsive">
-            <table class="table table-striped table-bordered" id="campi" name="campi" cellspacing="0" width="100%">
-              <thead>
+            <table class="table table-striped table-bordered" id="case" name="case" cellspacing="0" width="100%">
+         <thead>
                 <tr>
                 <th>id</th>
-                  <th>Nome Campo</th>
+                  <th>Nome Casa</th>
                   <th>Provincia</th>
-                  <th>Acqua Potabile</th>
-                  <th>Fiume</th>
-                  <th>Bosco</th>
+                  <th>Capienza</th>
+                  <th>Stanze</th>
+                  <th>Servizi</th>
                 </tr>
               </thead>
               <tbody>
@@ -147,6 +148,7 @@ var table = $('#campi').DataTable( {
     <script src="dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="dist/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="dist/js/multi-step-modal.js"></script>
 <script>
 sendEvent = function(sel, step) {
     $(sel).trigger('next.m.' + step);

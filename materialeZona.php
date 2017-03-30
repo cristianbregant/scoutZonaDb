@@ -17,45 +17,75 @@ include('php/session.php');
 
 
     <title>Materiale</title>
-		<!-- Latest compiled and minified CSS -->
 <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="dist/css/customcss.css" rel="stylesheet">
-<link href="dist/css/carousel.css" rel="stylesheet">
-
-<!-- Latest compiled and minified JavaScript -->
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+    
         <script src="dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="dist/css/datatables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css"/>
+ 
+<script type="text/javascript" src="dist/js/datatables.min.js"></script>
 <script>
 $(document).ready(function($) {
       
-    $.ajax({
-                    type: "GET",
+   var table = $('#materiali').DataTable( {
+        responsive:true,
+        bLengthChange: false,
+        language: {
+            "lengthMenu": "Mostra _MENU_ elementi",
+            "zeroRecords": "Nessun materiale trovato",
+            "info": "Mostra pagina _PAGE_ di _PAGES_",
+            "infoEmpty": "Nessun materiale presente",
+            
+            "infoFiltered": "(filtra al massimo _MAX_ materiali')",
+            "search": "Cerca:",
+            "paginate": {
+                "first":      "Prima",
+                "last":       "Ultima",
+                "next":       "Prossima",
+                "previous":   "Precedente"
+            },
+        },
+        columnDefs: [
+            {
+                "targets": [ 3 ],
+                "visible": false,
+                "searchable": false
+            }],
+        columns: [
+        { data: 'Nome' },
+        { data: 'Descrizione' },
+        { data: 'Qta' },
+        { data: 'id' }
+        ]
+    } );
+
+ $.ajax({
                     url: "php/materialiRetrieve.php",
                     dataType: "json",
-                    data: "{}",
                      success: function(response){
-                         var trHTML = '';
-                
-                        $.each(response, function (i, o) {
-                                   $('#materiali').append('<tr data-href=\"calendar.php\" class=\"table-row clickable-row\"><td>' + o.Nome + '</td><td>' + o.Descrizione + '</td><td>' + o.Qta + '</td><td style="display:none;">' + o.id + '</td></tr>');
-                                });
+                        $.each(response, function (i,o) {               
+                           table.row.add({
+                            "Nome": o.Nome,
+                            "Descrizione":o.Descrizione,
+                            "Qta":o.Qta,
+                            "id":o.id,
+
+                           }).draw();
+                        });
                     },
                      error: function(){
                         alert('errore carico eventi');
                      }
-                }); 
-    $("#materiali").on('click', 'tr' , function (event) {
-      var array = Array();
-        $(this).children('td').each(function(i,v){
-          array[i]=$(this).text();
-        //  console.log(array[i]);
-        });
-        var materiale = array[3];
-      //  console.log(materiale);
-        window.location = "calendar.php?materiale="+materiale;
+ });  
+  $("#materiali tbody").on('click','tr',function(){
+      var data = table.row(this).data();
+      var materiale = data['id'];
+      window.location = "calendar.php?materiale="+materiale;
     });
+        
 });
 </script>
 	</head>
@@ -68,12 +98,18 @@ $(document).ready(function($) {
 
     <div class="container">
    <div class="table-responsive">
-            <table class="table table-striped table-hover" id = "materiali" name="materiali">
+            <table class="table table-striped table-hover" id = "materiali" name="materiali" cellspacing="0" width="100%">
+             <thead>
                 <tr>
                   <th>Nome</th>
                   <th>Descrizione</th>
-                  <th>Q.tà</th>
+                  <th>Qta</th>
+                  <th>id</th>
                 </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
             </table>
           </div>
   </body>

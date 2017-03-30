@@ -63,13 +63,13 @@ $(document).ready(function($) {
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
-          <div class="desktop" id="img1" onclick="location.href='sceltaC.php';"><h2>Campi e case</h2></div>
+          <div class="desktop" id="img1" onclick="location.href='paginaMostraCampi.php';"><h2>Campi</h2></div>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <div class="desktop" id="img2" onclick="location.href='paginaMostraAttivita.php';"><h2>Attivita'</h2></div>
+          <div class="desktop" id="img2" onclick="location.href='paginaMostraCase.php';"><h2>Case</h2></div>
         </div>
         <div class="col-lg-4">
-          <div class="desktop" id="img3" onclick="location.href='materialeZona.php';"><h2>Materiali Zona</h2></div>
+          <div class="desktop" id="img3" onclick="location.href='paginaMostraEntrambi.php';"><h2>Case con campo</h2></div>
         </div>
       </div><!-- /.row -->
     </div>

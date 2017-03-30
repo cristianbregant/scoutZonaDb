@@ -150,6 +150,7 @@ var table = $('#attivita').DataTable( {
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
+            <form action="php/insertAttivitaFile.php" method="POST" enctype="multipart/form-data">
             <div class="modal-header">
                 <button type="button" class="close" 
                    data-dismiss="modal">
@@ -164,7 +165,7 @@ var table = $('#attivita').DataTable( {
             <!-- Modal Body -->
             <div class="modal-body">
                 
-                <form action="php/insertAttivitaFile.php" method="POST" enctype="multipart/form-data">
+                
                   <div class="form-group">
                     <label for="nomeAtt">Nome</label>
                       <input type="text" name="nomeAtt" class="form-control"
@@ -186,20 +187,23 @@ var table = $('#attivita').DataTable( {
                  <input type="hidden" name="action" value="upload" />
                   <label>Carica il tuo file:</label>
                   <input type="file" name="fileToUpload" id="fileToUpload" />
-                        <input type="submit" class="btn btn-default" value="Conferma"/>
-                </form>
+                        
+                
                 
                 
             </div>
             
             <!-- Modal Footer -->
             <div class="modal-footer">
+            <div style="float:right">
                 <button type="button" class="btn btn-default"
                         data-dismiss="modal">
                             Chiudi
                 </button>
-                
+                <input type="submit" class="btn btn-default" value="Conferma"/>
+              </div>
             </div>
+            </form>
         </div>
     </div>
 </div>

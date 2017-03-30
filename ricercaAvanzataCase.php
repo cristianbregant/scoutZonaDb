@@ -31,15 +31,15 @@ include('php/session.php');
 //caricaUltimiCampi();
 
 $(document).ready(function($) {
-   var table = $("#campi").DataTable({
+   var table = $("#case").DataTable({
     responsive:true,
         bLengthChange: false,
         language: {
             "lengthMenu": "Mostra _MENU_ elementi",
-            "zeroRecords": "Nessun campo trovato",
+            "zeroRecords": "Nessuna casa trovato",
             "info": "Mostra pagina _PAGE_ di _PAGES_",
-            "infoEmpty": "Nessun campo presente",
-            "infoFiltered": "(filtra al massimo _MAX_ campi')",
+            "infoEmpty": "Nessuna casa presente",
+            "infoFiltered": "(filtra al massimo _MAX_ case')",
             "search": "Cerca:",
             "paginate": {
                 "first":      "Prima",
@@ -56,11 +56,11 @@ $(document).ready(function($) {
             }],
         columns: [
         {data: 'id'},
-        { data: 'Nome_Campo' },
+        { data: 'Nome_Casa' },
         { data: 'Provincia' },
-        { data: 'Acqua' },
-        { data: 'Fiume_vicino' },
-        { data: 'Bosco_vicino' }
+        { data: 'Capienza_Letti' },
+        { data: 'Stanze' },
+        { data: 'Servizi' }
         ]
     } );
 
@@ -92,17 +92,16 @@ $(document).ready(function($) {
                         console.log(o.id+o.Nome_Campo+o.Provincia+o.Acqua+o.Fiume_vicino+o.Bosco_vicino);               
                            table.row.add({
                            	"id": o.id,
-                           	"Nome_Campo": o.Nome_Campo,
+                           	"Nome_Casa": o.Nome_Casa,
                            	"Provincia":o.Provincia,
-                           	"Acqua":o.Acqua,
-                           	"Fiume_vicino":o.Fiume_vicino,
-                           	"Bosco_vicino":o.Bosco_vicino
-
+                           	"Capienza_Letti":o.Capienza_Letti,
+                           	"Stanze":o.Stanze,
+                           	"Servizi":o.Servizi
                            }).draw();
                         });
                     },
                      error: function(){
-                        alert('errore carico campi');
+                        alert('errore carico case');
                      }
                    });
                   
@@ -128,7 +127,7 @@ $(document).ready(function($) {
                   <h2 class="sub-header">Ricerca avanzata</h2>
                   <!-- Button trigger modal -->
 					<div style="float:left">
-          <input type="button" onclick="location.href='paginaMostraCampi.php';" value="Indietro" />
+          <input type="button" onclick="location.href='paginaMostraCase.php';" value="Indietro" />
           </div>
 <br><br><br>
 
@@ -140,49 +139,39 @@ $(document).ready(function($) {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Ricerca avanzata</h4>
       </div>
       <div class="modal-body">
-			 <form class="form-horizontal" id="ricerca" name="ricerca">
+        
+  <form class="form-horizontal" id="ricerca" name="ricerca">
 <fieldset>
 
 <!-- Text input-->
-<input id="f" name="f" type="hidden" value="1">
+<input id="f" name="f" type="hidden" value="2">
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Nome</label>  
+  <label class="col-md-4 control-label" for="textinput">Nome Casa</label>  
   <div class="radio-inline">
   <input id="nome" name="nome" type="text" placeholder="" class="form-control input-md">
   </div>
 </div>
 <div class="form-group">
-  <label for="acqua">Acqua potabile necessaria:</label>
-  <select class="form-control" id="acqua" name="acqua">
-    <option value="SI">SI</option>
-    <option value="NO">NO</option>
-    <option value="NF">Non indispensabile</option>
-  </select>
+  <label for="posti">Numero Posti:</label>
+<div class="radio-inline">
+  <input id="posti" name="posti" type="text" placeholder="" class="form-control input-md">
+  </div>
 </div>
 <div class="form-group">
-  <label for="fiume">Fiume vicino necessario:</label>
-  <select class="form-control" id="fiume" name="fiume">
-    <option value="SI">SI</option>
-    <option value="NO">NO</option>
-    <option value="NF">Non indispensabile</option>
-  </select>
-</div>
-<div class="form-group">
-  <label for="bosco">Bosco vicino necessario:</label>
-  <select class="form-control" id="bosco" name="bosco">
-    <option value="SI">SI</option>
-    <option value="NO">NO</option>
-    <option value="NF">Non indispensabile</option>
-  </select>
+  <label for="stanze">Numero Stanze:</label>
+<div class="radio-inline">
+  <input id="stanze" name="stanze" type="text" placeholder="" class="form-control input-md">
+  </div>
 </div>
 
 </fieldset>
 
     <button id="cerca">Cerca</button>
 </form>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -192,23 +181,16 @@ $(document).ready(function($) {
   </div>
 </div>
 
-
-
-
-
-
-
-
           <div class="table-responsive">
-            <table class="table table-striped table-bordered" id="campi" name="campi" cellspacing="0" width="100%">
+            <table class="table table-striped table-bordered" id="case" name="case" cellspacing="0" width="100%">
               <thead>
                 <tr>
                 <th>id</th>
-                  <th>Nome Campo</th>
+                  <th>Nome Casa</th>
                   <th>Provincia</th>
-                  <th>Acqua Potabile</th>
-                  <th>Fiume</th>
-                  <th>Bosco</th>
+                  <th>Capienza</th>
+                  <th>Stanze</th>
+                  <th>Servizi</th>
                 </tr>
               </thead>
               <tbody>

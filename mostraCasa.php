@@ -34,10 +34,10 @@ $(document).ready(function($) {
   var dataT = $.urlParam('id');
   //console.log("cacca"+dataT);
     $.ajax({
-                    type: "POST",
+                    type: "GET",
                     url: "php/getScelta.php",
                     dataType: "json",
-                    data: "f=1&id="+dataT,
+                    data: "f=2&id="+dataT,
                      success: function(response){
                          var trHTML = '';
                 

@@ -13,7 +13,13 @@
         <div id="navb" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.php">Home</a></li>
-            <li><a href="paginaMostraCampi.php">Campi/Case</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Campi e Case<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="paginaMostraCampi.php">Campi</a></li>
+                <li><a href="paginaMostraCase.php">Case</a></li>
+              </ul>
+            </li>
             <li><a href="paginaMostraAttivita.php">Attività</a></li>
             <li><a href="materialeZona.php">Materiale di zona</a></li>
             <li class="dropdown">
