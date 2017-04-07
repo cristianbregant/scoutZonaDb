@@ -19,12 +19,12 @@
         $row = $stmt->fetch();
         //echo "dio";
         if($row){
-          //  echo "dio";
-           /* $check_password = hash('sha256', $_POST['password'] . $row['salt']);
-            for($round = 0; $round < 65536; $round++){
-                $check_password = hash('sha256', $check_password . $row['salt']);
+            $check_password = hash('sha256', $_POST['pass']);
+           /* for($round = 0; $round < 65536; $round++){
+                $check_password = hash('sha256', $check_password);
+                //echo $check_password;
             } */
-            if($_POST['pass'] === $row['password']){
+            if($check_password === $row['password']){
                 $login_ok = true;
             }
         }
@@ -50,48 +50,43 @@
   <meta charset="UTF-8">
   <title>Login</title>  
 <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="dist/css/customcss.css">
+      <link rel="stylesheet" href="dist/css/signin.css">
 
 
 
   <style>
-body {background-color: #9B59B6;}
-.vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: left;
-}
+body {background-image: url("dist/img/background_login.jpg")}
+
 </style>
 </head>
 
 <body>
 
  <div class="container">
-        <div class="row">
-        <div class ="col-md-4 vcenter"><img src="dist/img/agesci-logo-bn.png" width="220" height="250"/></div>
-            <div class="col-md-4 vcenter">
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Accedi</h3>
-                    </div>
-                    <div class="panel-body">
-                      <form action="#" method="post">
-                       <fieldset>
-                        <div class="form-group">
+   <div class="panelDesc">
+      <img src="dist/img/logoAgesci.png" height="135" width="120"/>
+     <div>
+     <br>
+      <h2>Benvenuto! <br></h2>
+      <p><font size="4">Questo è il nuovo database della Zona Scout di Gorizia,<br> per accedere ai contenuti si prega di effettuare il login con le proprie credenziali </font></p> 
+    </div>
+    <div class="clear"></div>
+   </div>
 
-                        <input type="text" name="user" id="user" required class="form-control" placeholder="Username"/>
-
-                        </div>
-                        <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="pass" type="password" value="">
-                        </div>
-                           <input type="submit" class="btn btn-lg btn-success btn-block" value="Login"/>
-                          </fieldset>
-                        </form>
-                      </div>
-          </div>
-      </div>
-      <div class="col-md-4 vcenter"><img src="dist/img/agesci-logo-bn.png" width="220" height="250"/></div>
+  <div class="panelLogin">
+    <form class="form-signin" method="POST" action="#">
+        <h2 class="form-signin-heading">Accedi</h2>
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input type="text" id="user" name="user" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Ricordami
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Accedi</button>
+      </form>
   </div>
 </div>
                                 <!-- Change this to a button or input when using this as a form -->
