@@ -11,11 +11,11 @@ include('php/session.php');
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-        <meta name="theme-color" content="#9B59B6">
+        <meta name="theme-color" content="#0d3c55">
 
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Case con campo registrate: </title>
+    <title>Ricerca Campi</title>
 		<!-- Latest compiled and minified CSS -->
 <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="dist/css/customcss.css" rel="stylesheet">
@@ -50,7 +50,7 @@ $(document).ready(function($) {
         },
         columnDefs: [
             {
-                "targets": [ 0,6 ],
+                "targets": [ 0 ],
                 "visible": false,
                 "searchable": false
             }],
@@ -60,13 +60,12 @@ $(document).ready(function($) {
         { data: 'Provincia' },
         { data: 'Capienza_Letti' },
         { data: 'Stanze' },
-        { data: 'Servizi' },
-        { data: 'id_campo'}
+        { data: 'Servizi' }
         ]
     } );
   $.ajax({
                     type: "POST",
-                    url: "php/getC.php?f=3",
+                    url: "php/getC.php?f=2",
                     dataType: "json",
                      success: function(response){
                         $.each(response, function (i,o) {               
@@ -76,8 +75,7 @@ $(document).ready(function($) {
                             "Provincia":o.Provincia,
                             "Capienza_Letti":o.Capienza_Letti,
                             "Stanze":o.Stanze,
-                            "Servizi":o.Servizi,
-                            "id_campo":o.id_campo
+                            "Servizi":o.Servizi
 
                            }).draw();
                         });
@@ -95,7 +93,7 @@ $(document).ready(function($) {
      $("#case tbody").on('click', 'tr', function () {
         var data = table.row( this ).data();
         var id = data['id'];
-        window.location = "mostraCasaCampo.php?id="+id;
+        window.location = "mostraCasa.php?id="+id;
   });
 });
 
@@ -131,7 +129,6 @@ $(document).ready(function($) {
                   <th>Capienza</th>
                   <th>Stanze</th>
                   <th>Servizi</th>
-                  <th>id_campo</th>
                 </tr>
               </thead>
               <tbody>

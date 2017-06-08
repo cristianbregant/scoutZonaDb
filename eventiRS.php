@@ -14,7 +14,7 @@ include('php/session.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-        <meta name="theme-color" content="#9B59B6">
+        <meta name="theme-color" content="#0d3c55">
 
 
       <title>Eventi</title>
@@ -40,11 +40,11 @@ $(document).ready(function() {
         bLengthChange: false,
         language: {
             "lengthMenu": "Mostra _MENU_ elementi",
-            "zeroRecords": "Nessun campo trovato",
+            "zeroRecords": "Nessun documento trovato",
             "info": "Mostra pagina _PAGE_ di _PAGES_",
-            "infoEmpty": "Nessun campo presente",
+            "infoEmpty": "Nessun documento presente",
             
-            "infoFiltered": "(filtra al massimo _MAX_ campi')",
+            "infoFiltered": "(filtra al massimo _MAX_ documenti')",
             "search": "Cerca:",
             "paginate": {
                 "first":      "Prima",
@@ -173,7 +173,7 @@ $(document).ready(function() {
 <br><br><br>
 
      <div class="table-responsive">
-            <table class="table table-striped table-hover" id = "eventi" name="eventi" cellspacing="0" width="100%">
+            <table class="table table-striped table-hover table-bordered" id = "eventi" name="eventi" cellspacing="0" width="100%">
              <thead>
                 <tr>
                   <th>Nome</th>

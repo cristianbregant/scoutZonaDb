@@ -11,7 +11,7 @@ include('php/session.php');
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-        <meta name="theme-color" content="#9B59B6">
+        <meta name="theme-color" content="#0d3c55">
 
     <link rel="icon" href="../../favicon.ico">
 
@@ -60,41 +60,34 @@ $(document).ready(function($) {
         { data: 'Provincia' },
         { data: 'Capienza_Letti' },
         { data: 'Stanze' },
-        { data: 'Servizi' }
+        { data: 'Servizi' },
+        { data: 'url',"render": function ( data, type, row, meta ) {
+                return "<a href='mostraCasa.php?id=" + row['id']+ "'>" + "Apri" + '</a>';}}
         ]
     } );
   $.ajax({
-                    type: "POST",
-                    url: "php/getC.php?f=2",
-                    dataType: "json",
-                     success: function(response){
-                        $.each(response, function (i,o) {               
-                           table.row.add({
-                            "id": o.id,
-                            "Nome_Casa": o.Nome_Casa,
-                            "Provincia":o.Provincia,
-                            "Capienza_Letti":o.Capienza_Letti,
-                            "Stanze":o.Stanze,
-                            "Servizi":o.Servizi
-
-                           }).draw();
-                        });
-                    },
-                     error: function(){
-                        alert('errore carico case');
-                     }
-                   });
-
-
-
-
-
-
-     $("#case tbody").on('click', 'tr', function () {
-        var data = table.row( this ).data();
-        var id = data['id'];
-        window.location = "mostraCasa.php?id="+id;
-  });
+    type: "POST",
+    url: "php/getC.php?f=2",
+    dataType: "json",
+     success: function(response){
+        $.each(response, function (i,o) {    
+          $.each(o, function (index, data) {
+            console.log("index",data);
+              table.row.add({
+                "id": data.id,
+                "Nome_Casa": data.Nome_Casa,
+                "Provincia":data.Provincia,
+                "Capienza_Letti":data.Capienza_Letti,
+                "Stanze":data.Stanze,
+                "Servizi":data.Servizi
+              }).draw();
+          });          
+        });
+    },
+     error: function(){
+        alert('errore carico case');
+     }
+   });
 });
 
 </script>
@@ -110,13 +103,13 @@ $(document).ready(function($) {
     <div class="container">
 
       <div class="starter-template">
-                  <h2 class="sub-header">Case Registrate: </h2>
+                  <h2 class="sub-header">Case </h2>
                   <!-- Button trigger modal -->
 					<div style="float:right">
           <input type="button" onclick="location.href='ricercaAvanzataCase.php';" value="Ricerca Avanzata" />
           </div>
 
-<br><br><br>
+          <br><br><br>
 
 
           <div class="table-responsive">
@@ -129,6 +122,7 @@ $(document).ready(function($) {
                   <th>Capienza</th>
                   <th>Stanze</th>
                   <th>Servizi</th>
+                  <th>URL</th>
                 </tr>
               </thead>
               <tbody>

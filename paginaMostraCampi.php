@@ -11,92 +11,86 @@ include('php/session.php');
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-        <meta name="theme-color" content="#9B59B6">
+        <meta name="theme-color" content="#0d3c55">
 
     <link rel="icon" href="../../favicon.ico">
 
     <title>Ricerca Campi</title>
 		<!-- Latest compiled and minified CSS -->
-<link href="dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="dist/css/customcss.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/customcss.css" rel="stylesheet">
 <!-- Optional theme -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="dist/css/datatables.min.css"/>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css"/>
- 
-<script type="text/javascript" src="dist/js/datatables.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="dist/css/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css"/>
+    <script type="text/javascript" src="dist/js/datatables.min.js"></script>
 
 <!-- Latest compiled and minified JavaScript -->
-<script>
-//caricaUltimiCampi();
-$(document).ready(function($) {
-var table = $('#campi').DataTable( {
-        responsive:true,
-        bLengthChange: false,
-        language: {
-            "lengthMenu": "Mostra _MENU_ elementi",
-            "zeroRecords": "Nessun campo trovato",
-            "info": "Mostra pagina _PAGE_ di _PAGES_",
-            "infoEmpty": "Nessun campo presente",
-            
-            "infoFiltered": "(filtra al massimo _MAX_ campi')",
-            "search": "Cerca:",
-            "paginate": {
-                "first":      "Prima",
-                "last":       "Ultima",
-                "next":       "Prossima",
-                "previous":   "Precedente"
+  <script>
+  $(document).ready(function($) {
+    var table = $('#campi').DataTable( {
+            responsive:true,
+            bLengthChange: false,
+            language: {
+                "lengthMenu": "Mostra _MENU_ elementi",
+                "zeroRecords": "Nessun campo trovato",
+                "info": "Mostra pagina _PAGE_ di _PAGES_",
+                "infoEmpty": "Nessun campo presente",
+                
+                "infoFiltered": "(filtra al massimo _MAX_ campi')",
+                "search": "Cerca:",
+                "paginate": {
+                    "first":      "Prima",
+                    "last":       "Ultima",
+                    "next":       "Prossima",
+                    "previous":   "Precedente"
+                },
             },
-        },
-        columnDefs: [
-            {
-                "targets": [ 0 ],
-                "visible": false,
-                "searchable": false
-            }],
-        columns: [
-        {data: 'id'},
-        { data: 'Nome_Campo' },
-        { data: 'Provincia' },
-        { data: 'Acqua' },
-        { data: 'Fiume_Vicino' },
-        { data: 'Bosco_Vicino' }
-        ]
-    } );
+            columnDefs: [
+                {
+                    "targets": [ 0 ],
+                    "visible": false,
+                    "searchable": false,
+                    
+                }],
+            columns: [
+            {data: 'id'},
+            { data: 'Nome_Campo' },
+            { data: 'Provincia' },
+            { data: 'Acqua' },
+            { data: 'Fiume_Vicino' },
+            { data: 'Bosco_Vicino'},
+            { data: 'url',"render": function ( data, type, row, meta ) {
+                return "<a href='mostraCampo.php?id=" + row['id']+ "'>" + "Apri" + '</a>';}}
+            ]
+        } );
 
- $.ajax({
-                    type: "POST",
-                    url: "php/getC.php?f=1",
-                    dataType: "json",
-                     success: function(response){
-                        $.each(response, function (i,o) {               
-                           table.row.add({
-                            "id": o.id,
-                            "Nome_Campo": o.Nome_Campo,
-                            "Provincia":o.Provincia,
-                            "Acqua":o.Acqua,
-                            "Fiume_vicino":o.Fiume_vicino,
-                            "Bosco_vicino":o.Bosco_vicino
+   $.ajax({
+                      type: "POST",
+                      url: "php/getC.php?f=1",
+                      dataType: "json",
+                       success: function(response){
+                          $.each(response, function (i,o) {    
+                            $.each(o,function(index,data){
+                              table.row.add({
+                                "id": data.id,
+                                "Nome_Campo": data.Nome_Campo,
+                                "Provincia":data.Provincia,
+                                "Acqua":data.Acqua,
+                                "Fiume_Vicino":data.Fiume_Vicino,
+                                "Bosco_Vicino":data.Bosco_Vicino
+                               }).draw();
+                            });           
+                          });
+                      },
+                       error: function(){
+                          alert('errore carico campi');
+                       }
+   });
 
-                           }).draw();
-                        });
-                    },
-                     error: function(){
-                        alert('errore carico case');
-                     }
- });
-
-
-
-
-     $("#campi tbody").on('click', 'tr', function () {
-        var data = table.row( this ).data();
-        var id = data['id'];
-        window.location = "mostraCampo.php?id="+id;
   });
-});
 
-</script>
+  </script>
 
 	</head>
 	<body>
@@ -109,13 +103,13 @@ var table = $('#campi').DataTable( {
     <div class="container">
 
       <div class="starter-template">
-                  <h2 class="sub-header">Lista dei campi e delle case</h2>
+                  <h2 class="sub-header">Campi</h2>
                   <!-- Button trigger modal -->
 					<div style="float:right">
           <input type="button" onclick="location.href='ricercaAvanzataCampi.php';" value="Ricerca Avanzata" />
           </div>
 
-<br><br><br>
+          <br><br><br>
 
 
           <div class="table-responsive">
@@ -128,6 +122,7 @@ var table = $('#campi').DataTable( {
                   <th>Acqua Potabile</th>
                   <th>Fiume</th>
                   <th>Bosco</th>
+                  <th>URL</th>
                 </tr>
               </thead>
               <tbody>

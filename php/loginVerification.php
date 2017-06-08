@@ -1,6 +1,6 @@
 
 <?php
-
+//This one check the data for the session!
 include("connection.php");
 
 

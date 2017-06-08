@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Database zona Gorizia</a>
+          <a class="navbar-brand" href=""><img src="dist/img/testNavbar.png" alt="Dispute Bills"></a>
         </div>
         <div id="navb" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -28,15 +28,16 @@
                 <li><a href="eventiLC.php">L/C</a></li>
                 <li><a href="eventiEG.php">E/G</a></li>
                 <li><a href="eventiRS.php">R/S</a></li>
+                <li><a href="eventiZona.php">Zona</a></li>
               </ul>
             </li>
           </ul>
            <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"  role="button" aria-haspopup="true" aria-expanded="false" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>   <?php echo $_SESSION['user'] ?>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"  role="button" aria-haspopup="true" aria-expanded="false" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>   <?php echo $_SESSION['gruppo'] ?>
               <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="php/logout.php">Modifica Password </a></li>
+            <li><a href="editPassword.php">Modifica Password </a></li>
             <li><a href="php/logout.php">Log Out </a></li>
           </ul>
         </li>

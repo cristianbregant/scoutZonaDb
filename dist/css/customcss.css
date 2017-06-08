@@ -8,8 +8,6 @@
 
 .navbar-static-top {
   margin-bottom: 19px;
-  min-height: 55px;
-  font-size: 18px;
 }
 /* --- navbar colored --- */
 .navbar-default {
@@ -21,7 +19,7 @@
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #ecdbff;
+  color: #ffa801;
 }
 .navbar-default .navbar-text {
   color: #ecf0f1;
@@ -31,26 +29,26 @@
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #ecdbff;
+  color: #ffa801;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #ecdbff;
-  background-color: #507183;
+  color: #ffa801;
+  background-color: #ffa801;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  color: #ecdbff;
-  background-color: #507183;
+  color: #ffa801;
+  background-color: #3d6276;
 }
 .navbar-default .navbar-toggle {
-  border-color: #507183;
+  border-color: #ffa801;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #507183;
+  background-color: #ffa801;
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #ecf0f1;
@@ -63,8 +61,20 @@
   color: #ecf0f1;
 }
 .navbar-default .navbar-link:hover {
-  color: #ecdbff;
+  color: #ffa801;
 }
+.navbar-brand {
+  padding: 0px;
+   pointer-events: none;
+   cursor: default;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+
+
 
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -72,12 +82,12 @@
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #ecdbff;
+    color: #ffa801;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #ecdbff;
+    color: #ffa801;
     background-color: #507183;
   }
 }
@@ -129,4 +139,10 @@ fieldset[disabled] .btn-custom.active {
 .btn-custom .badge { 
   color: #9B59B6; 
   background-color: #FFFFFF; 
+}
+
+#copyright{
+  text-align:center;
+  margin: 20px;
+
 }

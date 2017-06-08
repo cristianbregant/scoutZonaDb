@@ -43,7 +43,7 @@ if ($uploadOk == 0) {
 
         if($connection){
             $nomeFile = basename( $_FILES["fileToUpload"]["name"]);
-            $link = "localhost/DatabaseZona/uploads/".$branca."/".$nomeFile;
+            $link = "www.scoutgorizia3.it/SCOUTGO3/database/uploads/".$branca."/".$nomeFile;
 
          $query = "INSERT INTO eventi (Nome,Descrizione,Branca,DataInserimento,Link) VALUES ('".$nome."','".$desc."','".$branca."','".date("Y/m/d")."','".$link."')";
          $result = mysqli_query($connection,$query) or die(mysqli_error($connection));

@@ -33,6 +33,7 @@
           session_start();
             unset($row['password']);
             $_SESSION['user'] = $row['username'];
+            $_SESSION['gruppo'] = $row['gruppo'];
             header("Location: index.php");
             die("Redirecting to: index.php");
         }
@@ -49,15 +50,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>  
-<link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+      <style type="text/css">
+      body{
+        background-image: url("dist/img/background_login.jpg");
+      }
+      </style>
+      <link href="dist/css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" href="dist/css/signin.css">
-
-
-
-  <style>
-body {background-image: url("dist/img/background_login.jpg")}
-
-</style>
 </head>
 
 <body>

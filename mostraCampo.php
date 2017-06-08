@@ -11,7 +11,7 @@ include('php/session.php');
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-        <meta name="theme-color" content="#9B59B6">
+        <meta name="theme-color" content="#0d3c55">
 
     <link rel="icon" href="../../favicon.ico">
 
@@ -19,13 +19,15 @@ include('php/session.php');
 		<!-- Latest compiled and minified CSS -->
 <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="dist/css/customcss.css" rel="stylesheet">
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnycWatbGyK6ldFqErjFtko1yeMclNUOA&amp;sensor=true"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnycWatbGyK6ldFqErjFtko1yeMclNUOA&amp;"></script>
 <!-- Optional theme -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="dist/js/moment-with-locales.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script>
+var coord ="";
 $(document).ready(function($) {
+
   $.urlParam = function(name){
   var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
   return results[1] || 0;
@@ -43,20 +45,25 @@ $(document).ready(function($) {
                 
                         $.each(response, function (i, o) {
                        var dataC = moment(o.Data_ultima_verifica).format("DD/MM/YYYY");
-                          $('#campo').text(o.Grandezza_Campo);
+                          $('#campo').text(o.Grandezza_Campo+" mq");
                           $('#reg').text(o.Regione);
                           $('#prov').text(o.Provincia);
                           $('#com').text(o.Comune);
                           $('#telefono').text(o.Cellulare_Proprietario);
                           $('#nome').text(o.Nome_Campo);
                           $('#acqua').text(o.Acqua);
-                          $('#fiume').text(o.Fiume_vicino);
-                          $('#bosco').text(o.Bosco_vicino);
+                          $('#fiume').text(o.Fiume_Vicino);
+                          $('#bosco').text(o.Bosco_Vicino);
                           $('#ref').text(o.Referente);
                           $('#data').text(dataC);
                           $('#desc').text(o.Descrizione);
                           $('#cartina').text(o.Coordinate);
                                   /* $('#campi').append('<tr class=\"table-row\" data-href=\"http://'+o.Link+'\"><td>' + o.Nome_Campo + '</td><td>' + o.Provincia + '</td><td>' + o.Acqua + '</td><td>' + o.Fiume_vicino + '</td><td>' + o.Bosco_vicino + '</td><td style="display:none;">' + o.Link + '</td><td id="delete" align="center" onclick="deleteRow();">x</td></tr>');*/
+                                  coord = ""+o.Coordinate;
+
+                                  google.maps.event.addDomListener(window, 'load', initialize);
+
+
                                 });
                     },
                      error: function(){
@@ -65,12 +72,15 @@ $(document).ready(function($) {
                 });
 });
 function initialize() {
+  //Metodo per ricavare dalle coordinate nel db la cartina su maps che richiede per forza i valori di longitudine e latitudine separati
+  var coordC = {"lat": ""+coord.substr(0,coord.indexOf(',')),"long":""+coord.substr(coord.indexOf(',')+1,coord.length)};
+            var myLatlng = new google.maps.LatLng(coordC.lat,coordC.long);
             var mapOptions = {
-                center: new google.maps.LatLng(28.1823294, -82.352912),
-                zoom: 9,
+                center: myLatlng,
+                zoom: 15,
                 mapTypeId: google.maps.MapTypeId.HYBRID,
-                scrollwheel: false,
-                draggable: false,
+                scrollwheel: true,
+                draggable: true,
                 panControl: true,
                 zoomControl: true,
                 mapTypeControl: true,
@@ -79,9 +89,12 @@ function initialize() {
                 overviewMapControl: true,
                 rotateControl: true,
             };
-var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+            var marker = new google.maps.Marker({position:myLatlng});
+            var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+            marker.setMap(map);
+           
+
         }
-google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <style>
 #contactform .btn:hover {
@@ -112,10 +125,49 @@ img{
     <div class="container">
 
       <div class="starter-template">
-                 <h2>Terreno: </h2><h2 class="sub-header" id="nome"></h2>
+                 <h2>Terreno: <span id="nome"></span></h2>
+                 <hr/>
                   <!-- Button trigger modal -->
 <div class="col-md-4">
-<img src="dist/img/campo_ex.png" />
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="uploads/fotoCampi/1/20170412_082551.jpg" alt="Los Angeles" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="uploads/fotoCampi/1/20170412_083003.jpg" alt="Chicago" style="width:100%;">
+      </div>
+    
+      <div class="item">
+        <img src="uploads/fotoCampi/1/20170412_083034.jpg" alt="New york" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="uploads/fotoCampi/1/20170412_083348.jpg" alt="New yorka" style="width:100%;">
+      </div>
+
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 </div>
 <div class="col-md-8">
      <div class="form-group">
@@ -143,12 +195,6 @@ img{
         </div>
       </div>
       <div class="form-group">
-        <label class="col-md-4 control-label" for="textinput">Grandezza Campo:</label>  
-        <div class="radio-inline">
-        <p id="campo"></p>
-        </div>
-      </div>
-      <div class="form-group">
         <label class="col-md-4 control-label" for="textinput">Acqua potabile:</label>  
         <div class="radio-inline">
         <p id="acqua"></p>
@@ -164,6 +210,7 @@ img{
         <label class="col-md-4 control-label" for="textinput">Bosco Vicino:</label>  
         <div class="radio-inline">
         <p id="bosco"></p>
+      </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="textinput">Referente:</label>  
@@ -186,8 +233,6 @@ img{
 
 </div>
 
-
-      </div>
       <div class ="col-md-12">
       <h2>Descrizione</h2>
       <p id="desc"></p>
@@ -205,6 +250,9 @@ img{
 
     </div><!-- /.container -->
     </div>
+    <div id="footer">
+           <?php include_once('footer.php'); ?>
+ </div>
    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

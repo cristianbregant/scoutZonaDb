@@ -17,14 +17,15 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="Cristian Bregant">
-    <meta name="theme-color" content="#9B59B6">
+    <meta name="theme-color" content="#0d3c55">
     <link rel="icon" href="../../favicon.ico">
 
     <title>Home</title>
 		<!-- Latest compiled and minified CSS -->
 <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="dist/css/customcss.css" rel="stylesheet">
-<link href="dist/css/carousel.css" rel="stylesheet">
+<!--<link href="dist/css/carousel.css" rel="stylesheet">-->
+<!--<link href="dist/css/mdb.css" rel="stylesheet">-->
     <link href="dist/css/cssIndex.css" rel="stylesheet">
 
 
@@ -62,18 +63,24 @@ $(document).ready(function($) {
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-sm-4 ">
           <div class="desktop" id="img1" onclick="location.href='sceltaC.php';"><h2>Campi e case</h2></div>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-sm-4 ">
           <div class="desktop" id="img2" onclick="location.href='paginaMostraAttivita.php';"><h2>Attivita'</h2></div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-sm-4">
           <div class="desktop" id="img3" onclick="location.href='materialeZona.php';"><h2>Materiali Zona</h2></div>
         </div>
       </div><!-- /.row -->
     </div>
     </div>
+    <div id="footer">
+           <?php include_once('footer.php'); ?>
+ </div>
+ </div>
+   <!--  <?php //include_once('footer.php'); ?>-->
   </body>
 
 </html>
+

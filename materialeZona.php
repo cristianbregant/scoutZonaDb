@@ -13,7 +13,7 @@ include('php/session.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-        <meta name="theme-color" content="#9B59B6">
+        <meta name="theme-color" content="#0d3c55">
 
 
     <title>Materiale</title>
@@ -58,7 +58,9 @@ $(document).ready(function($) {
         { data: 'Nome' },
         { data: 'Descrizione' },
         { data: 'Qta' },
-        { data: 'id' }
+        { data: 'id' },
+        { data: 'url',"render": function ( data, type, row, meta ) {
+                return "<a href='calendar.php?id=" + row['id']+ "'>" + "Apri" + '</a>';}}
         ]
     } );
 
@@ -77,14 +79,10 @@ $(document).ready(function($) {
                         });
                     },
                      error: function(){
-                        alert('errore carico eventi');
+                        alert('errore carico materiali');
                      }
  });  
-  $("#materiali tbody").on('click','tr',function(){
-      var data = table.row(this).data();
-      var materiale = data['id'];
-      window.location = "calendar.php?materiale="+materiale;
-    });
+
         
 });
 </script>
@@ -97,14 +95,16 @@ $(document).ready(function($) {
        </div>
 
     <div class="container">
+    <div align="center"><h2 class="sub-header">Materiale di Zona </h2></div>
    <div class="table-responsive">
-            <table class="table table-striped table-hover" id = "materiali" name="materiali" cellspacing="0" width="100%">
+            <table class="table table-striped table-hover table-bordered" id = "materiali" name="materiali" cellspacing="0" width="100%">
              <thead>
                 <tr>
                   <th>Nome</th>
                   <th>Descrizione</th>
                   <th>Qta</th>
                   <th>id</th>
+                  <th>Disponibilita'</th>
                 </tr>
                 </thead>
                 <tbody>

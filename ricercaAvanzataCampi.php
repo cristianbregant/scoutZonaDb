@@ -11,7 +11,7 @@ include('php/session.php');
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-        <meta name="theme-color" content="#9B59B6">
+        <meta name="theme-color" content="#0d3c55">
 
     <link rel="icon" href="../../favicon.ico">
 
@@ -59,8 +59,8 @@ $(document).ready(function($) {
         { data: 'Nome_Campo' },
         { data: 'Provincia' },
         { data: 'Acqua' },
-        { data: 'Fiume_vicino' },
-        { data: 'Bosco_vicino' }
+        { data: 'Fiume_Vicino' },
+        { data: 'Bosco_Vicino' }
         ]
     } );
 
@@ -70,7 +70,7 @@ $(document).ready(function($) {
         var id = data['id'];
         window.location = "mostraCampo.php?id="+id;
   });
-     $("#myModal").modal('show');
+     $("#myModal").modal({backdrop: "static"});
      $("#cerca").click(function(event){
 
      	event.preventDefault();
@@ -95,8 +95,8 @@ $(document).ready(function($) {
                            	"Nome_Campo": o.Nome_Campo,
                            	"Provincia":o.Provincia,
                            	"Acqua":o.Acqua,
-                           	"Fiume_vicino":o.Fiume_vicino,
-                           	"Bosco_vicino":o.Bosco_vicino
+                           	"Fiume_Vicino":o.Fiume_Vicino,
+                           	"Bosco_Vicino":o.Bosco_Vicino
 
                            }).draw();
                         });
@@ -139,8 +139,7 @@ $(document).ready(function($) {
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Ricerca avanzata</h4>
       </div>
       <div class="modal-body">
 			 <form class="form-horizontal" id="ricerca" name="ricerca">
@@ -149,17 +148,17 @@ $(document).ready(function($) {
 <!-- Text input-->
 <input id="f" name="f" type="hidden" value="1">
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Nome</label>  
-  <div class="radio-inline">
+  <label class="col-md-3 control-label" for="textinput">Nome</label>  
+  <div class="col-md-9">
   <input id="nome" name="nome" type="text" placeholder="" class="form-control input-md">
   </div>
 </div>
 <div class="form-group">
   <label for="acqua">Acqua potabile necessaria:</label>
-  <select class="form-control" id="acqua" name="acqua">
+  <select class="form-control col-md-9" id="acqua" name="acqua">
     <option value="SI">SI</option>
     <option value="NO">NO</option>
-    <option value="NF">Non indispensabile</option>
+    <option value="NF" selected>Non indispensabile</option>
   </select>
 </div>
 <div class="form-group">
@@ -167,7 +166,7 @@ $(document).ready(function($) {
   <select class="form-control" id="fiume" name="fiume">
     <option value="SI">SI</option>
     <option value="NO">NO</option>
-    <option value="NF">Non indispensabile</option>
+    <option value="NF" selected>Non indispensabile</option>
   </select>
 </div>
 <div class="form-group">
@@ -175,7 +174,7 @@ $(document).ready(function($) {
   <select class="form-control" id="bosco" name="bosco">
     <option value="SI">SI</option>
     <option value="NO">NO</option>
-    <option value="NF">Non indispensabile</option>
+    <option value="NF" selected>Non indispensabile</option>
   </select>
 </div>
 
@@ -183,9 +182,6 @@ $(document).ready(function($) {
 
     <button id="cerca">Cerca</button>
 </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
 

@@ -2,8 +2,8 @@
 
 // recupero vaolori delle select
 // mi connetto al database
+include("connection.php");
 $branca = $_GET['branca'];
-$connection = mysqli_connect("localhost","root","","zona") or die("Error " . mysqli_error($connection));
 
 if($connection){
 	// estraggo tutte le regioni

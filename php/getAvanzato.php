@@ -1,7 +1,7 @@
 <?php
 
 
-$fun=$_POST['f'];
+$fun=$_GET['f'];
 switch($fun){
 	case "1":
 		funzioneCampi();
@@ -89,8 +89,12 @@ $parametriQuery = $stringNome.$stringAcqua.$stringBosco.$stringFiume;
 
 if($connection){
 	// estraggo tutte le regioni
-	$query = "SELECT * FROM campo WHERE $parametriQuery";
-
+	if($parametriQuery){
+		$query = "SELECT * FROM campo WHERE $parametriQuery";
+	}else{
+		$query = "SELECT * FROM campo";
+	}
+	
 	$result = mysqli_query($connection,$query) or die(mysqli_error($connection));
 
 	// ciclo i risultati della query
@@ -144,7 +148,7 @@ if(isset($_GET['posti'])){
 
 if(isset($_GET['stanze'])){
 	$stanze = $_GET['stanze'];
-	$stringStanze = "Stanze = '$stanze'"
+	$stringStanze = "Stanze = '$stanze'";
 	if($stanze !== '' && ($stringNome !== '' || $stringPosti !== '')){
 		$stringStanze = "AND ".$stringStanze;
 	}	

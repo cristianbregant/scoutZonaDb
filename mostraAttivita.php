@@ -11,7 +11,7 @@ include('php/session.php');
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-        <meta name="theme-color" content="#9B59B6">
+        <meta name="theme-color" content="#0d3c55">
 
     <link rel="icon" href="../../favicon.ico">
 
@@ -43,9 +43,9 @@ $(document).ready(function($) {
                         $.each(response, function (i, o) {
                        var dataC = moment(o.DataInserimento).format("DD/MM/YYYY");
                           $('#nome').text(o.Nome);
-                          $('#reg').text(o.Descrizione);
-                          $('#prov').text(o.Branca);
-                          $('#com').text(o.Autore);
+                          $('#desc').text(o.Descrizione);
+                          $('#branca').text(o.Branca);
+                          $('#autore').text(o.Autore);
                           $('#data').text(dataC);
                           $('#link').text(o.Nome_file);
                           $('#link').attr("href","http://"+o.Link_file);
@@ -82,37 +82,38 @@ img{
     <div class="container">
 
       <div class="starter-template">
-                 <h2>Terreno: </h2><h2 class="sub-header" id="nome"></h2>
+                 <h2>Attività: <span id="nome"></span></h2>
+                 <hr>
                   <!-- Button trigger modal -->
 <div class="col-md-12">
      <div class="form-group">
-        <label class="col-md-4 control-label" for="textinput">Regione:</label>  
+        <label class="col-md-4 control-label" for="textinput">Descrizione:</label>  
         <div class="radio-inline">
-        <p id="reg"></p>
+        <p id="desc"></p>
         </div>
       </div>
       <div class="form-group">
-        <label class="col-md-4 control-label" for="textinput">Provincia:</label>  
+        <label class="col-md-4 control-label" for="textinput">Branca:</label>  
         <div class="radio-inline">
-        <p id="prov"></p>
+        <p id="branca"></p>
         </div>
       </div>
       <div class="form-group">
-        <label class="col-md-4 control-label" for="textinput">Comune:</label>  
+        <label class="col-md-4 control-label" for="textinput">Autore:</label>  
         <div class="radio-inline">
-        <p id="com"></p>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="textinput">Grandezza Campo:</label>  
-        <div class="radio-inline">
-        <a href="" id="link"></a>
+        <p id="autore"></p>
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="textinput">Data Inserimento:</label>  
         <div class="radio-inline">
         <p id="data"></p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">Link Allegato:</label>  
+        <div class="radio-inline">
+        <a id="link">Apri</a>
         </div>
       </div>
 
@@ -128,7 +129,9 @@ img{
    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    
+     <div id="footer">
+           <?php include_once('footer.php'); ?>
+ </div>
     <script>window.jQuery || document.write('<script src="dist/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

@@ -14,122 +14,95 @@ include('php/session.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <meta name="theme-color" content="#9B59B6">
+    <meta name="theme-color" content="#0d3c55">
 
 
     <title>Attivita'</title>
-		<!-- Latest compiled and minified CSS -->
-<link href="dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="dist/css/customcss.css" rel="stylesheet">
-<link href="dist/css/carousel.css" rel="stylesheet">
+    		<!-- Latest compiled and minified CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/customcss.css" rel="stylesheet">
+    <link href="dist/css/carousel.css" rel="stylesheet">
 
 <!-- Latest compiled and minified JavaScript -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-        <script src="dist/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="dist/css/datatables.min.css"/>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css"/>
- 
-<script type="text/javascript" src="dist/js/datatables.min.js"></script>
-<script type="text/javascript" src="dist/js/moment-with-locales.js"></script>
-<script>
-$(document).ready(function($) {
-var table = $('#attivita').DataTable( {
-        responsive:true,
-        pageLength: 15,
-        bLengthChange: false,
+    <script src="dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="dist/css/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css"/>
+    <script type="text/javascript" src="dist/js/datatables.min.js"></script>
+    <script type="text/javascript" src="dist/js/moment-with-locales.js"></script>
+    <script>
+      $(document).ready(function($) {
+      var table = $('#attivita').DataTable( {
+              responsive:true,
+              pageLength: 15,
+              bLengthChange: false,
 
-        language: {
-            "lengthMenu": "Mostra _MENU_ elementi",
-            "zeroRecords": "Nessun attivita' trovata",
-            "info": "Mostra pagina _PAGE_ di _PAGES_",
-            "infoEmpty": "Nessun attivita' presente",
-            "infoFiltered": "(filtra al massimo _MAX_ attivita')",
-            "search": "Cerca:",
-            "paginate": {
-                "first":      "Prima",
-                "last":       "Ultima",
-                "next":       "Prossima",
-                "previous":   "Precedente"
-            },
-        },
-        ajax: {
-          url: "php/getUltimeAttivita.php", 
-          dataSrc:""
-        },
-        columnDefs: [
-            {
-                "targets": [ 0 ],
-                "visible": false,
-                "searchable": false
-            }],
-        columns: [
-        {data: 'id'},
-        { data: 'Nome' },
-        { data: 'Descrizione' },
-        { data: 'Branca' },
-        { data: 'Autore' },
-        { data: 'DataInserimento' ,
-            'render': function (data) {
-                     return (moment(data).format("DD/MM/YYYY"));
-                   }}
-        ]
-    } );
+              language: {
+                  "lengthMenu": "Mostra _MENU_ elementi",
+                  "zeroRecords": "Nessun attivita' trovata",
+                  "info": "Mostra pagina _PAGE_ di _PAGES_",
+                  "infoEmpty": "Nessun attivita' presente",
+                  "infoFiltered": "(filtra al massimo _MAX_ attivita')",
+                  "search": "Cerca:",
+                  "paginate": {
+                      "first":      "Prima",
+                      "last":       "Ultima",
+                      "next":       "Prossima",
+                      "previous":   "Precedente"
+                  },
+              },
+              ajax: {
+                url: "php/getUltimeAttivita.php", 
+                dataSrc:""
+              },
+              columnDefs: [
+                  {
+                      "targets": [ 0 ],
+                      "visible": false,
+                      "searchable": false
+                  }],
+              columns: [
+              {data: 'id'},
+              { data: 'Nome' },
+              { data: 'Descrizione' },
+              { data: 'Branca' },
+              { data: 'Autore' },
+              { data: 'DataInserimento' ,
+                  'render': function (data) {
+                           return (moment(data).format("DD/MM/YYYY"));
+                         }},
+              { data: 'url',"render": function ( data, type, row, meta ) {
+                  return "<a href='mostraAttivita.php?id=" + row['id']+ "'>" + "Apri" + '</a>';}}
+              ]
+          } );
+        
+          $("#form").submit(function(e){
+
+              alert($("#form").serialize());
+              $.ajax({
+                          type: "POST",
+                          url: "php/ricercaAttivita.php",
+                          data: $("#form").serialize(),
+                          dataType: "json",
+                           success: function(response){
+                               var trHTML = '';
+                      $("#attivita tr").html("");
+
+                          },
+                           error: function(){
+                              alert('errore carico attivita');
+                           }
+                      });
 
 
 
-
-   //ultimeAttivita();
-  $("#attivita tbody").on('click', 'tr', function () {
-        var data = table.row( this ).data();
-        var id = data['id'];
-        window.location = "mostraAttivita.php?id="+id;
+           });
       });
-    
-    $("#form").submit(function(e){
 
-        alert($("#form").serialize());
-        $.ajax({
-                    type: "POST",
-                    url: "php/ricercaAttivita.php",
-                    data: $("#form").serialize(),
-                    dataType: "json",
-                     success: function(response){
-                         var trHTML = '';
-                $("#attivita tr").html("");
-                       /* $.each(response, function (i, o) {
-                                   $('#attivita').append('<tr class=\"table-row\" data-href=\"http://'+o.Link+'\"><td>' + o.Nome + '</td><td>' + o.Descrizione + '</td><td>' + o.Autore + '</td><td>' + o.DataInserimento + '</td><td style="display:none;">' + o.Link + '</td><td id="delete" align="center" onclick="deleteRow();">ooooo</td></tr>');
-                                });*/
-                    },
-                     error: function(){
-                        alert('errore carico attivita');
-                     }
-                });
-
-
-
-     });
-});
-/*function ultimeAttivita(){
-    $.ajax({
-                    type: "POST",
-                    url: "php/getUltimeAttivita.php",
-                    dataType: "json",
-                     success: function(response){
-                         var trHTML = '';
-                
-                        $.each(response, function (i, o) {
-                                   $('#attivita').append('<tr class=\"table-row\" data-href=\"http://'+o.Link+'\"><td>' + o.Nome + '</td><td>' + o.Descrizione + '</td><td>' + o.Autore + '</td><td>' + o.DataInserimento + '</td><td style="display:none;">' + o.Link + '</td><td id="delete" align="center" onclick="deleteRow();">x</td></tr>');
-                                });
-                    },
-                     error: function(){
-                        alert('errore carico attivita');
-                     }
-                });*/
-
- 
-</script>
+     
+    </script>
 	</head>
 	<body>
   <div id="wrapper">
@@ -139,6 +112,7 @@ var table = $('#attivita').DataTable( {
        </div>
 
     <div class="container">
+    <div align="center"><h2 class="sub-header">Attivita' </h2></div>
     <div style="float:left">
         <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalNorm">
     Inserisci
@@ -182,6 +156,7 @@ var table = $('#attivita').DataTable( {
                       <option>L/C</option>
                       <option>E/G</option>
                       <option>R/S</option>
+                      <option>Co.Ca.</option>
                      </select>
                   </div>
                  <input type="hidden" name="action" value="upload" />
@@ -208,7 +183,7 @@ var table = $('#attivita').DataTable( {
     </div>
 </div>
     
-   </div>
+</div>
 <br><br><br>
    <div class="table-responsive">
             <table id="attivita" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -220,6 +195,7 @@ var table = $('#attivita').DataTable( {
                 <th>Branca</th>
                 <th>Autore</th>
                 <th>Data Inserimento</th>
+                <th>URL</th>
             </tr>
         </thead>
     </table>
@@ -228,6 +204,9 @@ var table = $('#attivita').DataTable( {
 
 
        </div>
+        <div id="footer">
+           <?php include_once('footer.php'); ?>
+ </div>
   </body>
 
 </html>

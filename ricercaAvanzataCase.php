@@ -11,7 +11,7 @@ include('php/session.php');
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-        <meta name="theme-color" content="#9B59B6">
+        <meta name="theme-color" content="#0d3c55">
 
     <link rel="icon" href="../../favicon.ico">
 
@@ -149,20 +149,20 @@ $(document).ready(function($) {
 <!-- Text input-->
 <input id="f" name="f" type="hidden" value="2">
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Nome Casa</label>  
-  <div class="radio-inline">
+  <label class="col-md-3 control-label" for="textinput">Nome</label>  
+  <div class="col-md-9">
   <input id="nome" name="nome" type="text" placeholder="" class="form-control input-md">
   </div>
 </div>
 <div class="form-group">
-  <label for="posti">Numero Posti:</label>
-<div class="radio-inline">
+  <label class="cold-md-3 control-label" for="posti">Numero Posti:</label>
+  <div class="col-md-9">
   <input id="posti" name="posti" type="text" placeholder="" class="form-control input-md">
   </div>
 </div>
 <div class="form-group">
-  <label for="stanze">Numero Stanze:</label>
-<div class="radio-inline">
+  <label class="cold-md-3 control-label" for="stanze">Numero Stanze:</label>
+  <div class="col-md-9">
   <input id="stanze" name="stanze" type="text" placeholder="" class="form-control input-md">
   </div>
 </div>
@@ -172,9 +172,6 @@ $(document).ready(function($) {
     <button id="cerca">Cerca</button>
 </form>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
 

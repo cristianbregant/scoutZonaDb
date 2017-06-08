@@ -69,7 +69,7 @@ $(document).ready(function($) {
           <div class="desktop" id="img2" onclick="location.href='paginaMostraCase.php';"><h2>Case</h2></div>
         </div>
         <div class="col-lg-4">
-          <div class="desktop" id="img3" onclick="location.href='paginaMostraEntrambi.php';"><h2>Case con campo</h2></div>
+          <div class="desktop" id="img3" onclick="location.href='paginaMostraCaseCampi.php';"><h2>Case con campo</h2></div>
         </div>
       </div><!-- /.row -->
     </div>

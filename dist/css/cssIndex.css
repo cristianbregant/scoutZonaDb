@@ -5,25 +5,31 @@ h2{
 #img1 h2{
       display: table-cell;
       vertical-align: middle;
+       text-align: center;
    }
    #img2 h2{
       display: table-cell;
       vertical-align: middle;
+       text-align: center;
    }
    #img3 h2{
       display: table-cell;
       vertical-align: middle;
+       text-align: center;
    }
     #img1{
              display: table;
+              text-align: center;
 
    }
    #img2{
           display: table;
+           text-align: center;
 
    }
    #img3{
              display: table;
+              text-align: center;
 
    }
 @media (min-width:769px){
@@ -35,6 +41,7 @@ h2{
        background-position:center;
        margin-right: 10px;
     transition: all 0.4s ease;    
+     text-align: center;
    }
    #img2{
      /*  background-image: url('../img/campo_ex.png'); */
@@ -44,6 +51,7 @@ h2{
        background-position:center;  
        margin-right: 10px;
     transition: all 0.4s ease; 
+     text-align: center;
    }
    #img3{
      /*  background-image: url('../img/casa_ex.png') ;*/
@@ -53,6 +61,7 @@ h2{
        background-position:center;  
        margin-right: 10px;
     transition: all 0.4s ease; 
+     text-align: center;
    }
    .desktop:hover{
     transform: scale(1.05);
@@ -62,34 +71,43 @@ h2{
 @media (max-width:768px){
     .desktop{
        /* background-image: url("../img/campo_ex.png");*/
-        width:100%;
+       width:100%;
         height: 300px;
         background-position:center;
 
     }
        #img1{
       /* background-image: url('../img/scout3.png');*/
+      background-color: rgb(40,53,147);
        width:100%;
         height: 300px;
        background-position:center;
+       margin-bottom: 20px;
        margin-right: 10px;
-    transition: all 0.4s ease;    
+    transition: all 0.4s ease;  
+     text-align: center;  
    }
    #img2{
       /* background-image: url('../img/campo_ex.png'); */
+      background-color: rgb(40,53,147);
        width:100%;
         height: 300px;
        background-position:center;  
+       margin-bottom: 20px;
        margin-right: 10px;
     transition: all 0.4s ease; 
+     text-align: center;
    }
    #img3{
      /*  background-image: url('../img/casa_ex.png') ;*/
+     background-color: rgb(40,53,147);
        width:100%;
         height: 300px;
        background-position:center;  
+       margin-bottom: 20px;
        margin-right: 10px;
     transition: all 0.4s ease; 
+     text-align: center;
    }
 }
 
@@ -101,6 +119,8 @@ h2{
       background-color: rgb(40,53,147);
        width:100%;
         height: 100px;
+         text-align: center;
+         margin-bottom: 20px;
       /* background-position:center;*/
           }
    #img2{
@@ -108,6 +128,9 @@ h2{
        background-color: rgb(40,53,147);
        width:100%;
         height: 100px;
+         text-align: center;
+                  margin-bottom: 20px;
+
      /*  background-position:center;  */
    }
    #img3{
@@ -115,6 +138,9 @@ h2{
       background-color: rgb(40,53,147);
        width:100%;
         height: 100px;
+         text-align: center;
+                  margin-bottom: 20px;
+
        /*background-position:center;  */
    }
 }
